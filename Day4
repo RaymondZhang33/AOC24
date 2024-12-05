@@ -1,0 +1,46 @@
+with open('input.txt', 'r') as f:
+    lines = f.readlines()
+
+def xmasFinderpt1(arr):
+    tot = 0
+    for j in range(len(arr)):
+        for k in range(len(arr[j])):
+            if arr[j][k] == "X" and len(arr[k]) - 4 >= k and arr[j][k + 1] == "M" and arr[j][k + 2] == "A" and arr[j][k + 3] == "S":
+                tot += 1
+            if arr[j][k] == "S" and len(arr[k]) - 4 >= k and arr[j][k + 1] == "A" and arr[j][k + 2] == "M" and arr[j][k + 3] == "X":
+                tot += 1
+            if arr[j][k] == "X" and len(arr) - 4 >= j and arr[j + 1][k] == "M" and arr[j + 2][k] == "A" and arr[j + 3][k] == "S":
+                tot += 1
+            if arr[j][k] == "S" and len(arr) - 4 >= j and arr[j + 1][k] == "A" and arr[j + 2][k] == "M" and arr[j + 3][k] == "X":
+                tot += 1
+            if arr[j][k] == "X" and len(arr[k]) - 4 >= k and len(arr) - 4 >= j and arr[j + 1][k + 1] == "M" and arr[j + 2][k + 2] == "A" and arr[j + 3][k + 3] == "S":
+                tot += 1
+            if arr[j][k] == "S" and len(arr[k]) - 4 >= k and len(arr) - 4 >= j and arr[j + 1][k + 1] == "A" and arr[j + 2][k + 2] == "M" and arr[j + 3][k + 3] == "X":
+                tot += 1
+            if arr[j][k] == "X" and k >= 3 and len(arr) - 4 >= j and arr[j + 1][k - 1] == "M" and arr[j + 2][k - 2] == "A" and arr[j + 3][k - 3] == "S":
+                tot += 1
+            if arr[j][k] == "S" and k >= 3 and len(arr) - 4 >= j and arr[j + 1][k - 1] == "A" and arr[j + 2][k - 2] == "M" and arr[j + 3][k - 3] == "X":
+                tot += 1
+    print(tot)
+def xmasFinderpt2(arr):
+    tot = 0
+    for j in range(len(arr)):
+        for k in range(len(arr[j])):
+            if arr[j][k] == "M" and len(arr[k]) - 3 >= k and len(arr) - 3 >= j and arr[j][k + 2] == "S" and arr[j + 1][k + 1] == "A" and arr[j + 2][k] == "M" and arr[j + 2][k + 2] == "S":
+                tot += 1
+            if arr[j][k] == "S" and len(arr[k]) - 3 >= k and len(arr) - 3 >= j and arr[j][k + 2] == "S" and arr[j + 1][k + 1] == "A" and arr[j + 2][k] == "M" and arr[j + 2][k + 2] == "M":
+                tot += 1
+            if arr[j][k] == "S" and len(arr[k]) - 3 >= k and len(arr) - 3 >= j and arr[j][k + 2] == "M" and arr[j + 1][k + 1] == "A" and arr[j + 2][k] == "S" and arr[j + 2][k + 2] == "M":
+                tot += 1
+            if arr[j][k] == "M" and len(arr[k]) - 3 >= k and len(arr) - 3 >= j and arr[j][k + 2] == "M" and arr[j + 1][k + 1] == "A" and arr[j + 2][k] == "S" and arr[j + 2][k + 2] == "S":
+                tot += 1
+    print(tot)
+
+arr = []
+
+for line in lines:
+    a = list(str(input()))
+    arr.append(a)
+
+xmasFinderpt1(arr)
+xmasFinderpt2(arr)
