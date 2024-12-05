@@ -39,8 +39,7 @@ def day4pt2(arr):
 arr = []
 
 for line in lines:
-    a = list(line)
-    arr.append(a)
+    arr.append(list(line))
 
 day4pt1(arr)
 day4pt2(arr)
