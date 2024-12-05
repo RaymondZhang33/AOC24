@@ -1,0 +1,32 @@
+with open('input.txt', 'r') as f:
+    lines = f.readlines()
+
+def day1pt1(arr1, arr2):
+    sum = 0
+    for i in range(len(arr1)):
+        sum += abs(min(arr1) - min(arr2))
+        arr1.remove(min(arr1))
+        arr2.remove(min(arr2))
+    print(sum)
+def day1pt2(arr1, arr2):
+    score = 0
+    for i in range(len(arr1)):
+        score += arr1[i] * arr2.count(arr1[i])
+    print(score)
+
+arr1 = []
+arr2 = []
+
+for line in lines:
+    a, b = line.split()
+    arr1.append(int(a))
+    arr2.append(int(b))
+
+day1pt1(arr1, arr2)
+
+for line in lines:
+    a, b = line.split()
+    arr1.append(int(a))
+    arr2.append(int(b))
+
+day1pt2(arr1, arr2)
