@@ -39,7 +39,7 @@ def xmasFinderpt2(arr):
 arr = []
 
 for line in lines:
-    a = list(str(input()))
+    a = list(line)
     arr.append(a)
 
 xmasFinderpt1(arr)
