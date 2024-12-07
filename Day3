@@ -1,0 +1,69 @@
+with open('input.txt', 'r') as f:
+    lines = f.readlines()
+
+def day3pt1(arr):
+    sum = 0
+    def mul(x, y):
+        return x * y
+    for i in range(len(arr)):
+        arr[i] = "".join(arr[i])
+        for j in range(len(arr[i]) - 11):
+            if "".join(arr[i][j:j + 3]) == "mul":
+                try:
+                    sum += eval(arr[i][j:j+12])
+                except:
+                    try:
+                        sum += eval(arr[i][j:j+11])
+                    except:
+                        try:
+                            sum += eval(arr[i][j:j+10])
+                        except:
+                            try:
+                                sum += eval(arr[i][j:j+9])
+                            except:
+                                try:
+                                    sum += eval(arr[i][j:j+8])
+                                except:
+                                    try:
+                                        sum += eval(arr[i][j:j+7])
+                                    except:
+                                        continue
+    print(sum)
+def day3pt2(arr):
+    sum = 0
+    def mul(x, y):
+        return x * y
+    do = True
+    for i in range(len(arr)):
+        arr[i] = "".join(arr[i])
+        for j in range(len(arr[i]) - 11):
+            if "".join(arr[i][j:j+7]) == "don't()":
+                do = False
+            if "".join(arr[i][j:j+4]) == "do()":
+                do = True
+            if do and "".join(arr[i][j:j + 3]) == "mul":
+                try:
+                    sum += eval(arr[i][j:j+12])
+                except:
+                    try:
+                        sum += eval(arr[i][j:j+11])
+                    except:
+                        try:
+                            sum += eval(arr[i][j:j+10])
+                        except:
+                            try:
+                                sum += eval(arr[i][j:j+9])
+                            except:
+                                try:
+                                    sum += eval(arr[i][j:j+8])
+                                except:
+                                    try:
+                                        sum += eval(arr[i][j:j+7])
+                                    except:
+                                        continue
+    print(sum)
+arr = []
+for line in lines:
+    arr.append(list(line))
+day3pt1(arr)
+day3pt2(arr)
