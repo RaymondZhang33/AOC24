@@ -1,0 +1,59 @@
+with open('input.txt', 'r') as f:
+    lines = f.readlines()
+
+def day2pt1(arr):
+    safe = 0
+    for i in range(len(arr)):
+        cond1 = True
+        cond2 = True
+        a = sorted(arr[i])
+        b = a[::-1]
+        if arr[i] != a and arr[i] != b:
+            cond1 = False
+        for j in range(len(arr[i]) - 1):
+            if abs(arr[i][j] - arr[i][j + 1]) < 1 or abs(arr[i][j] - arr[i][j + 1]) > 3:
+                cond2 = False
+                break
+        if cond1 and cond2:
+            safe += 1
+    print(safe)
+def day2pt2(arr):
+    safe = 0
+    for i in range(len(arr)):
+        cond1 = True
+        cond2 = True
+        a = sorted(arr[i])
+        b = a[::-1]
+        if arr[i] != a and arr[i] != b:
+            cond1 = False
+        for j in range(len(arr[i]) - 1):
+            if abs(arr[i][j] - arr[i][j + 1]) < 1 or abs(arr[i][j] - arr[i][j + 1]) > 3:
+                cond2 = False
+                break
+        if cond1 and cond2:
+            safe += 1
+            continue
+        
+        for k in range(len(arr[i])):
+            newarr = arr[i][:k] + arr[i][k+1:] # This part essentially concatenates two arrays (the first part of the array not including k) and the second array (the second part which also does not include k, k + 1)
+            cond1 = True
+            cond2 = True
+            a = sorted(newarr)
+            b = a[::-1]
+            if newarr != a and newarr != b:
+                cond1 = False
+            for j in range(len(newarr) - 1):
+                if abs(newarr[j] - newarr[j + 1]) < 1 or abs(newarr[j] - newarr[j + 1]) > 3:
+                    cond2 = False
+                    break
+
+            if cond1 and cond2:
+                safe += 1
+                break
+
+    print(safe)
+arr = []
+for line in lines:
+    arr.append(list(map(int, line.split())))
+day2pt1(arr)
+day2pt2(arr)
